@@ -1,13 +1,10 @@
 "use strict";
+
 const questFirst = prompt("Сколько фильмов вы уже посмотрели ?", ` `);
-let numberOfFilms = questFirst;
-
-const questSecond = prompt ("Один из последних просмотренных фильмов ?", "");
-const questTherd = prompt ("На сколько оцените ?", "");
-const questForth = prompt ("Один из последних просмотренных фильмов ?", "");
-const questFifth = prompt ("На сколько оцените ?", "");
+let numberOfFilms = +questFirst;
 
 
+// Личные данные
 let personaMovieDB = {
     count: numberOfFilms,
     movies: {},
@@ -16,7 +13,16 @@ let personaMovieDB = {
     privat: false,
 };
 
-personaMovieDB.movies[questSecond] = questTherd;
-personaMovieDB.movies[questForth] = questFifth;
+
+// Опросник
+let i = 1;
+
+do {
+    const lastMov = prompt ("Один из последних просмотренных фильмов ?", ""),
+            mark = prompt ("На сколько оцените ?", "");
+    personaMovieDB.movies[lastMov] = +mark;
+    i++;
+}
+while (i == 2);
 
 console.log (personaMovieDB);
